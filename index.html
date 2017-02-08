@@ -1,60 +1,543 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>你好，我的世界。</title>
-    <link rel="stylesheet" href="index.css" id="video">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-</head>
-<body>
-    <div class="bg">
-        <video autoplay loop>
-            <source src="resources/sky.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="hd">
-        <img class="img-h1" src="img/card.png" alt="">
-        <div class="content">
-            <h2>行到水穷处  坐看云起时</h2>
-            <span>You go your way,I'll go your way too.</span>
-            <div class="hr"></div>
-            <ul class="list1">
-                <li><a href="javascript:void(0);">首页</a></li>
-                <li><a href="javascript:void(0);">文章</a></li>
-                <li><a href="javascript:void(0);">图片</a></li>
-                <li><a href="javascript:void(0);">分类</a></li>
-                <li><a href="javascript:void(0);">关于</a></li>
-            </ul>
-            <ul class="icon">
-                <li><a target="_blank" href="https://github.com/Niefee"></a></li>
-                <li><a target="_blank" href="https://twitter.com/?lang=zh-cn"></a></li>
-                <li><a target="_blank" href="http://weibo.com/itfor/home"></a></li>
-                <li><a target="_blank" href="http://www.zhihu.com/people/hu-cai"></a></li>
-                <li><a target="_blank" href="mailto:ppitfor@gmail.com?subject=很高兴认识你，&body=你好，我是..."></a></li>
-            </ul>
-        </div>
-    </div>
-    <script>
-        var video= document.getElementById('video');
-        video.playbackRate = 0.1;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+<title>胡才辉</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+<style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+    body {
+        background: #fff;
+        font-family: Lato, sans-serif;
+        margin: 0 0 80px;
+    }
 
-        var list1=document.getElementsByClassName("list1");
-        var Oli=list1[0].getElementsByTagName("li");
-        /*Oli[2].getElementsByTagName("a")[0].onclick=function () {
-            alert("ko");
-        }*/
-        for (var i=0;i<Oli.length;i++){
-            if (i==0){
-                continue;
-            }else{
-                Oli[i].getElementsByTagName("a")[0].onclick=function () {
-                    alert("嘻嘻(*^__^*)，正在赶紧开发中...");
-                }
-            }
+    a {
+        color: #2ecc71;
+    }
 
+    a:focus,
+    a:hover {
+        color: #f1c40f;
+        text-decoration: none;
+    }
+
+    p {
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    p+p {
+        margin-top: 10px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin-top: 0
+    }
+
+    section {
+        margin-top: 30px;
+    }
+
+    li {
+        line-height: 1.8;
+        list-style: none;
+    }
+
+    li:before {
+        content: "\f052";
+        float: left;
+        font: 13px Octicons;
+        margin-top: 6px;
+        margin-left: -20px;
+        opacity: .1;
+        position: absolute;
+    }
+
+    blockquote {
+        border-left: 5px solid #e7e9ec;
+        font-size: 14px;
+    }
+
+    em {
+        color: #95a5a6;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    h4 span:first-child {
+        color: #000;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 750px;
+        padding: 0 30px;
+    }
+
+    .col-sm-6 {
+        margin-bottom: 10px;
+    }
+
+    .col-sm-12 h4 {
+        margin-top: 12px;
+    }
+
+    .col-sm-12+.col-sm-12 {
+        margin-top: 30px;
+    }
+
+    #header {
+        background: #f4f6f6;
+        padding: 50px 0;
+        margin-bottom: 30px;
+    }
+
+    #header h2 {
+        color: #95a5a6;
+        font-size: 24px;
+    }
+
+    #content h3 {
+        color: #f1c40f;
+        font-size: 26px;
+        margin-top: -4px;
+    }
+
+    #content aside {
+        text-align: right;
+        padding-right: 30px;
+    }
+
+    #profiles .network {
+        text-transform: capitalize;
+    }
+
+    #work .position,
+    #volunteer .position {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    #education .area {
+        font-weight: bold;
+    }
+
+    #education .area:before {
+        content: "\f0d7";
+        font: 16px Octicons;
+        margin-right: 6px;
+    }
+
+    #education .studyType {
+        margin-left: 25px;
+    }
+
+    #awards .summary,
+    #publications .summary {
+        margin-top: 8px;
+    }
+
+    #publications .website a:before {
+        content: attr(href);
+    }
+
+    @media (min-width: 480px) {
+        .strike-through {
+            border-top: 1px solid #f4f6f6;
+            height: 20px;
+            margin-top: 12px;
+            margin-bottom: -2px;
+            position: relative;
         }
+        .strike-through span,
+        .strike-through a {
+            background: #fff;
+            position: absolute;
+        }
+        .strike-through span:first-child {
+            padding-right: 20px;
+            margin-top: -12px;
+        }
+        .strike-through span+span {
+            font-size: 14px;
+            margin-top: -10px;
+            padding-left: 20px;
+            right: 0;
+        }
+    }
 
+    @media (max-width: 768px) {
+        .col-sm-6:last-child {
+            margin-bottom: 0px;
+        }
+        #content aside {
+            margin-bottom: 20px;
+            padding-right: 0;
+            text-align: left;
+        }
+        #publications .website a:before {
+            content: "View publication";
+        }
+    }
 
-    </script>
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 26px;
+        }
+        .date {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .strike-through span:first-child {
+            margin-bottom: 7px;
+        }
+        .strike-through span {
+            display: block;
+        }
+        #header {
+            margin-bottom: 10px;
+            padding: 40px 0;
+        }
+        #actions {
+            display: none;
+        }
+    }
+</style></head>
+<body>
+<header id="header">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<h1>
+胡才辉
+</h1>
+<h2>
+前端开发工程师
+</h2>
+</div>
+</div>
+</div>
+</header>
+<div id="content" class="container">
+<section id="contact" class="row">
+<aside class="col-sm-3">
+<h3>Contact</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-6">
+<strong>Email</strong>
+<div class="email">niefee@qq.com</div>
+</div>
+<div class="col-sm-6">
+<strong>Phone</strong>
+<div class="phone">18825065604</div>
+</div>
+<div class="col-sm-6">
+<strong>Website</strong>
+<div class="website">
+<a href="http://www.niefee.com/">http://www.niefee.com/</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="about" class="row">
+<aside class="col-sm-3">
+<h3>About</h3>
+</aside>
+<div class="col-sm-9">
+<p>从四年前接触前端到现在，我一直保持对互联网与前端技术的关注与热爱。在过去的两年，参与多个开源项目的学习开发，也在三家不同技术选型的公司实践商业项目开发。对技术保持着一贯的热情与学习，从基本的HTML、CSS、JavaScript到ES6、JSX语法、react开源框架等都有所涉猎。长时间的技术社区学习与三次的实习，给我的个人能力得到很大的提升</p>
+</div>
+</section>
+<section id="profiles" class="row">
+<aside class="col-sm-3">
+<h3>Profiles</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-6">
+<strong class="network">
+知乎
+</strong>
+<div class="username">
+<div class="url">
+<a href="https://www.zhihu.com/people/hu-cai">牧柠的日子</a>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<strong class="network">
+Github
+</strong>
+<div class="username">
+<div class="url">
+<a href="https://github.com/Niefee">沐霖</a>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<strong class="network">
+Twitter
+</strong>
+<div class="username">
+<div class="url">
+<a href="https://twitter.com/ppitfor">xiaoMu</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="work" class="row">
+<aside class="col-sm-3">
+<h3>Work</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-12">
+<h4 class="strike-through">
+<span>广州皓轩科技有限公司</span>
+<span class="date">
+2015-2 — 2015-3
+</span>
+</h4>
+<div class="website pull-right">
+<a href="http://hauxsoft.com/">http://hauxsoft.com/</a>
+</div>
+<div class="position">
+前端开发
+</div>
+<div class="summary">
+<p>参与在线商城前端开发工作，使用angularjs框架构建，根据设计图完成项目的大部分样式重构与功能开发。</p>
+</div>
+<h4>Highlights</h4>
+<ul class="highlights">
+<li class="bullet">负责电子商务网站pc端、移动端页面的开发与维护</li>
+<li class="bullet">了解BAT前端发展技术发展趋势，并与实际工作相结合。</li>
+</ul>
+</div>
+<div class="col-sm-12">
+<h4 class="strike-through">
+<span>广州拾筹金融服务科技有限公司</span>
+<span class="date">
+2015-4 — 2015-8
+</span>
+</h4>
+<div class="website pull-right">
+<a href="http://shichou.cn">http://shichou.cn</a>
+</div>
+<div class="position">
+前端开发工程师
+</div>
+<div class="summary">
+<p>负责PC端、移动端的开发，协调后端完成项目上线</p>
+</div>
+<h4>Highlights</h4>
+<ul class="highlights">
+<li class="bullet">PC端使用一个开源UI框架，兼做好SEO、访问体验优化</li>
+<li class="bullet">移动端独自使用reactjs重构，首次尝试，开发遇到多种环境问题</li>
+<li class="bullet">跟踪研究前沿的前端技术，并应用到公司的网站产品开发中。</li>
+</ul>
+</div>
+<div class="col-sm-12">
+<h4 class="strike-through">
+<span>广州乐商软件</span>
+<span class="date">
+2015-9 — 2016-1
+</span>
+</h4>
+<div class="website pull-right">
+<a href="http://www.imall.com.cn/about">http://www.imall.com.cn/about</a>
+</div>
+<div class="position">
+前端开发工程师
+</div>
+<div class="summary">
+<p>这是一家专业的大型开发公司，技术深厚，进一步开阔我视野。在公司，第一次接触前端开发原生APP，把一个APP从零开始做到上线，技术上得到很多的提升。</p>
+</div>
+<h4>Highlights</h4>
+<ul class="highlights">
+<li class="bullet">使用react native开发iOS、安卓两个平台的APP，期间不断处理各种兼容问题</li>
+<li class="bullet">页面构造使用JSX语法，逻辑使用ES6语法，样式布局使用flex</li>
+<li class="bullet">期间需要各种技术人员帮助，协调项目部署才能运行</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="education" class="row">
+<aside class="col-sm-3">
+<h3>Education</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-12">
+<h4 class="strike-through">
+<span>广州体育学院</span>
+<span class="date">
+2013-09 — 2017-05
+</span>
+</h4>
+<div class="area">
+体育经济专业
+</div>
+<div class="studyType">
+本科
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="publications" class="row">
+<aside class="col-sm-3">
+<h3>Publications</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-12">
+<h4 class="strike-through">
+<span>前端开源电子书</span>
+<span class="date">
+2015-08 至今
+</span>
+</h4>
+<div class="website pull-right">
+<a href="https://note.niefee.com/"></a>
+</div>
+<div class="publisher">
+<em>Published by</em>
+<strong>Niefee</strong>
+</div>
+<div class="summary">
+<p>这个电子书集合我过去在前端学习中汇集的知识与经验，但内容不止包含前端方面，部分涉及后端、计算机基础、算法等。</p>
+</div>
+</div>
+<div class="col-sm-12">
+<h4 class="strike-through">
+<span>简历模板</span>
+<span class="date">
+2015-08
+</span>
+</h4>
+<div class="website pull-right">
+<a href="http://xn--ldrr3aog122bx4dfn2biqgh7a583abw9a.niefee.com/"></a>
+</div>
+<div class="publisher">
+<em>Published by</em>
+<strong>Niefee</strong>
+</div>
+<div class="summary">
+<p>喜欢设计，构思了一份有体验性的个人简历。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="skills" class="row">
+<aside class="col-sm-3">
+<h3>Skills</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-6">
+<div class="name">
+<h4>前端技能</h4>
+</div>
+<ul class="keywords">
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript/ES6</li>
+<li>...</li>
+</ul>
+</div>
+<div class="col-sm-6">
+<div class="name">
+<h4>框架</h4>
+</div>
+<ul class="keywords">
+<li>Angularjs</li>
+<li>Reactjs</li>
+<li>React Native</li>
+<li>jQuery</li>
+<li>Bootstrap</li>
+<li>...</li>
+</ul>
+</div>
+<div class="col-sm-6">
+<div class="name">
+<h4>后端技能</h4>
+</div>
+<ul class="keywords">
+<li>Nodejs</li>
+<li>MongoDB</li>
+<li>...</li>
+</ul>
+</div>
+<div class="col-sm-6">
+<div class="name">
+<h4>其他</h4>
+</div>
+<ul class="keywords">
+<li>SEO优化</li>
+<li>Alexa网站数据监测</li>
+<li>基本UI设计原理与颜色搭配概念</li>
+<li>...</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="languages" class="row">
+<aside class="col-sm-3">
+<h3>Languages</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-6">
+<div class="language">
+<strong>English</strong>
+</div>
+<div class="fluency">
+能阅读Github开源项目文档，能根据英文报错关键字查找解决办法
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="interests" class="row">
+<aside class="col-sm-3">
+<h3>Interests</h3>
+</aside>
+<div class="col-sm-9">
+<div class="row">
+<div class="col-sm-6">
+<div class="name">
+<h4>运动</h4>
+</div>
+<ul class="keywords">
+<li>跑步</li>
+<li>爬山</li>
+</ul>
+</div>
+<div class="col-sm-6">
+<div class="name">
+<h4>设计</h4>
+</div>
+<ul class="keywords">
+<li>喜欢有视觉冲击的作品</li>
+<li>爱好色彩的搭配</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
 </body>
 </html>
